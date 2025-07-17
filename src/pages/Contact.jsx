@@ -33,7 +33,7 @@ export default function Contact() {
     <Container className="my-5">
       <h2 className="text-center mb-4">Contáctame</h2>
 
-      <p className="second text-center mb-4">Llena el formulario y contáctame</p>
+     
 
       <Form
         ref={form}
@@ -42,23 +42,23 @@ export default function Contact() {
         style={{ maxWidth: "600px" }}
       >
         <Form.Group className="mb-3" controlId="formNombre">
-          <Form.Label>Nombre</Form.Label>
-          <Form.Control type="text" placeholder="Tu nombre completo" name="name" required />
+         
+          <Form.Control type="text" className="second" placeholder="Tu nombre completo" name="name" required />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="tu@email.com" name="email" required />
+          
+          <Form.Control type="email" className="second" placeholder="tu@email.com" name="email" required />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formAsunto">
-          <Form.Label>Asunto</Form.Label>
-          <Form.Control type="text" placeholder="Asunto del mensaje (opcional)" name="subject" />
+         
+          <Form.Control type="text" className="second" placeholder="Asunto del mensaje (opcional)" name="subject" />
         </Form.Group>
 
-        <Form.Group className="mb-4" controlId="formMensaje">
-          <Form.Label>Mensaje</Form.Label>
-          <Form.Control
+        <Form.Group className="mb-4"  controlId="formMensaje">
+         
+          <Form.Control className="second"
             as="textarea"
             rows={5}
             placeholder="Escribe tu mensaje aquí..."
@@ -68,7 +68,7 @@ export default function Contact() {
         </Form.Group>
 
         <div className="text-center">
-          <Button variant="success" type="submit">
+          <Button  className="btn btn-outline-light px-4 custom-submit-button" type="submit">
             Enviar
           </Button>
         </div>
@@ -83,7 +83,7 @@ export default function Contact() {
       <div className="mt-5 text-center">
         <p>
           Puedes escribirme directamente a:{" "}
-          <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a>
+          <a href="mailto:tuemail@ejemplo.com">1castiglionimarcos@gmail</a>
         </p>
         <p>
           O visitar mi perfil en{" "}

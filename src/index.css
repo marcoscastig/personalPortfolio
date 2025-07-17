@@ -82,3 +82,15 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
   user-select: none; /* evita que puedas seleccionar texto al clickear o pasar el mouse */
 }
 
+.custom-submit-button {
+  border: 1px solid #ccc !important; /* Cambiá el color del borde */
+  color: #fff !important; /* Color del texto */
+  background-color: transparent !important; /* Sin fondo o el que prefieras */
+}
+
+.custom-submit-button:hover {
+  background-color: #fff !important;
+  color: #000 !important; /* o el color que prefieras para el texto */
+  border-color: #fff !important;
+}
+

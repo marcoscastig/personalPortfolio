@@ -2,15 +2,16 @@
   "name": "mi-portafolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://marcoscastig.github.io/portfolio",
+  "homepage": "https://github.com/marcoscastig/personalPortfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "vite build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build",
+"deploy": "gh-pages -d dist"
+
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
