@@ -1,0 +1,84 @@
+.nav-link,
+.nav-link.active,
+.nav-link:focus,
+.nav-link:hover,
+.nav-link:visited,
+.nav-link:active {
+  background-color: transparent !important;
+  color: inherit !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* Opcional: efecto sutil al pasar mouse */
+.nav-link:hover {
+  color: #555; /* cambio sutil de color */
+  text-decoration: underline;
+}
+
+/* Opcional: que el link activo tenga un estilo suave */
+.nav-link.active {
+  font-weight: 600;
+  color: #333;
+}
+body {
+  background: linear-gradient(135deg, #064e3b, #047857);
+  /*background-color: #f0f0f0;  un gris claro */
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color:#ffff;
+}
+
+/*background: linear-gradient(135deg, #064e3b, #047857);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* si ya usás Poppins u otra fuente */
+  /*color: white; /* para que el texto contraste bien */
+
+
+.second {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+h1 {
+ font-size: 4rem; /* agranda el texto */
+/*  margin-top: 4rem; /* lo baja respecto al borde superior */
+ /* text-align: center; /* opcional: para que quede centrado */
+}
+
+h1, h2, h3, h4, h5, h6, p, span, li, a {
+  cursor: default;
+}
+
+/* Efecto sutil para las Nav.Link */
+.nav-link {
+  cursor: pointer;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+  color: inherit; /* mantiene el color original */
+}
+
+/* Hover */
+.nav-link:hover {
+  color: #28a745; /* verde */
+  border-bottom: 2px solid #28a745;
+  text-decoration: none; /* sin subrayado default */
+}
+
+/* Elimina el fondo azul del link activo */
+.nav-link.active {
+  background-color: transparent !important;
+  color: #28a745 !important; /* mismo color verde para indicar activo */
+  border-bottom: 2px solid #28a745;
+  box-shadow: none !important;
+}
+
+.nav-link {
+  user-select: none; /* evita que puedas seleccionar texto al clickear o pasar el mouse */
+}
+
