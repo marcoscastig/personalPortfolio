@@ -10,12 +10,12 @@ export default function Home() {
       </p>
 
       <div className="d-flex justify-content-center gap-3">
-        <link to="/proyectos" className="btn btn-outline-light px-4">
+        <Link to="/proyectos" className="btn btn-outline-light px-4">
           Ver Proyectos
-        </link>
-        <link to="/about" className="btn btn-outline-light px-4">
+        </Link>
+        <Link to="/about" className="btn btn-outline-light px-4">
           Sobre Mí
-        </link>
+        </Link>
       </div>
       
     </div>
