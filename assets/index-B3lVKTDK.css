@@ -1,4 +1,4 @@
-@charset "UTF-8";.fade-enter{opacity:0;transform:scale(.95)}.fade-enter-active{opacity:1;transform:scale(1);transition:opacity .3s ease-in-out,transform .3s ease-in-out}.fade-exit{opacity:1;transform:scale(1)}.fade-exit-active{opacity:0;transform:scale(.95);transition:opacity .3s ease-in-out,transform .3s ease-in-out}/*!
+@charset "UTF-8";/*!
 * Bootstrap  v5.3.7 (https://getbootstrap.com/)
 * Copyright 2011-2025 The Bootstrap Authors
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
