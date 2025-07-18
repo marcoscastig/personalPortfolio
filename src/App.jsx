@@ -1,5 +1,5 @@
 import { Container, Nav } from 'react-bootstrap'
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
+import { HashRouter , Routes, Route, NavLink } from 'react-router-dom'
 import Footer from './components/Footer';
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
@@ -10,13 +10,10 @@ import Proyectos from './pages/Proyectos.jsx'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Container className="mt-3">
-        <h1 className="mt-3 mt-md-5   text-center">Marcos Castiglioni</h1>
+        <h1 className="mt-3 mt-md-5 text-center">Marcos Castiglioni</h1>
           <h4 className="text-muted text-center">Programador y Desarrollador Web</h4>
-
-          
-
         <hr className="border border-dark opacity-50 mx-auto w-75" />
 
         <Nav variant="pills" className=" second justify-content-center mb-4">
@@ -50,6 +47,6 @@ export default function App() {
         </Routes>
               <Footer />
       </Container>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
