@@ -1,39 +1,12 @@
 import { Container, Nav } from 'react-bootstrap'
-import { HashRouter , Routes, Route, NavLink, useLocation  } from 'react-router-dom'
-import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { HashRouter , Routes, Route, NavLink } from 'react-router-dom'
 import Footer from './components/Footer';
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import Proyectos from './pages/Proyectos.jsx'
-import './transitions.css'; // Aquí pondremos los estilos CSS para la transición
 
-function AnimatedRoutes() {
-  const location = useLocation();
 
-  // Scroll al tope al cambiar de ruta
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  return (
-    <SwitchTransition>
-      <CSSTransition
-        key={location.pathname}
-        classNames="fade"
-        timeout={300}
-        unmountOnExit
-      >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/proyectos" element={<Proyectos />} />
-        </Routes>
-      </CSSTransition>
-    </SwitchTransition>
-  );
-}
 
 export default function App() {
   return (
@@ -74,7 +47,6 @@ export default function App() {
         </Routes>
               <Footer />
       </Container>
-      <AnimatedRoutes />
     </HashRouter>
   )
 }
