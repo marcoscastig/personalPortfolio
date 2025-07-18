@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; URL=/" />
+    <meta charset="UTF-8" />
+    <script type="text/javascript">
+      // Guarda la ruta original para restaurarla luego
+      sessionStorage.redirect = location.pathname;
+    </script>
+    <!-- Redirige automáticamente a la raíz -->
+    <meta http-equiv="refresh" content="0; url=/" />
   </head>
   <body></body>
 </html>
