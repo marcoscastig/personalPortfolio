@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -10,12 +10,12 @@ export default function Home() {
       </p>
 
       <div className="d-flex justify-content-center gap-3">
-        <a href="/proyectos" className="btn btn-outline-light px-4">
+        <link to="/proyectos" className="btn btn-outline-light px-4">
           Ver Proyectos
-        </a>
-        <a href="/about" className="btn btn-outline-light px-4">
+        </link>
+        <link to="/about" className="btn btn-outline-light px-4">
           Sobre Mí
-        </a>
+        </link>
       </div>
       
     </div>
