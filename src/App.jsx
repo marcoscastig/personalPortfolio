@@ -1,5 +1,5 @@
 import { Container, Nav } from 'react-bootstrap'
-import { HashRouter , Routes, Route, NavLink } from 'react-router-dom'
+import { HashRouter , Routes, Route, NavLink, useLocation  } from 'react-router-dom'
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import Footer from './components/Footer';
 import Home from './pages/Home.jsx'
