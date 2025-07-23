@@ -12,7 +12,7 @@ export default function App() {
   return (
     <HashRouter>
       <Container className="mt-3">
-        <h1 className="mt-3 mt-md-5 text-center">Marcos Castiglioni 1</h1>
+        <h1 className="mt-3 mt-md-5 text-center">Marcos Castiglioni </h1>
           <h4 className="text-muted text-center">Programador y Desarrollador Web</h4>
         <hr className="border border-dark opacity-50 mx-auto w-75" />
 

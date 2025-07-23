@@ -1,29 +1,33 @@
 import React from "react";
 import { Card, Row, Col, Button } from "react-bootstrap";
+import japImg from '../assets/japflix.png';
+import ecommerceImg from '../assets/Ecommerce.png';
+import crudImg from '../assets/crud.jpg';
+import calcImg from '../assets/calc.jpg';
 
 const proyectos = [
-  {
-    titulo: "Movies",
-    descripcion: "Proyecto de películas con React",
-    imagen: "src/assets/japflix.png",
-    url: "https://marcoscastig.github.io/Movies/",
-  },
    {
     titulo: "E-Commerce",
     descripcion: "Proyecto final de curso 2022, usando HTML CCS y JavaScript",
-    imagen: "src/assets/Ecommerce.png",
+    imagen: ecommerceImg,
     url: "https://marcoscastig.github.io/E_commerce_Jap2022/",
+  },
+    {
+    titulo: "Movies",
+    descripcion: "Proyecto de películas con React",
+    imagen: japImg,
+    url: "https://marcoscastig.github.io/Movies/",
   },
   {
     titulo: "Calculator",
     descripcion: "Una calculador aimple que hice por diversion",
-    imagen: "ruta/a/tu/imagen.jpg",
+    imagen: calcImg,
     url: "https://marcoscastig.github.io/Calculator/",
   },
   {
     titulo: "CRUD Api",
     descripcion: "MockApi es una herramienta que permite realizar operaciones usando la interface RESTful.",
-    imagen: "ruta/a/tu/imagen.jpg",
+    imagen: crudImg,
     url: "https://marcoscastig.github.io/Crud-MockApi/",
   },
   // ...otros proyectos
@@ -35,30 +39,73 @@ const isMobile = () => {
   return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 };
 
+import { useEffect, useRef } from "react";
+
 export default function Proyectos() {
-  const mobile = isMobile();
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target); // Solo se anima la primera vez
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardsRef.current.forEach(card => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="text-center">
       <h2 className="mb-4">Mis Proyectos</h2>
       <Row xs={1} sm={2} md={2} lg={4} className="g-4">
         {proyectos.map((proyecto, index) => (
-          <Col key={index}>
-            <Card className="h-100 shadow">
-              <Card.Img variant="top" src={proyecto.imagen} alt={proyecto.titulo} />
-              <Card.Body>
-                <Card.Title>{proyecto.titulo}</Card.Title>
-                <Card.Text>{proyecto.descripcion}</Card.Text>
-                <Button
-                  variant="primary"
-                  href={proyecto.url}
-                  target={mobile ? "_self" : "_blank"}
-                  rel="noopener noreferrer"
-                >
-                  Ver Proyecto
-                </Button>
-              </Card.Body>
-            </Card>
+          <Col key={index} className="h-100">
+            <div
+              ref={el => (cardsRef.current[index] = el)}
+              className="card-animate d-lg-none"
+            >
+              <Card className="project-card h-100 shadow d-flex flex-column">
+  <Card.Img variant="top" src={proyecto.imagen} alt={proyecto.titulo} />
+  <Card.Body className="d-flex flex-column">
+    <Card.Title>{proyecto.titulo}</Card.Title>
+    <Card.Text className="flex-grow-1">{proyecto.descripcion}</Card.Text>
+    <a
+      href={proyecto.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="btn btn-primary mt-2"
+    >
+      Ver proyecto
+    </a>
+  </Card.Body>
+</Card>
+            </div>
+
+            {/* Vista escritorio sin animación */}
+            <a
+              href={proyecto.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="d-none d-lg-block"
+            >
+              <Card className="h-100 shadow project-card">
+                <Card.Img variant="top" src={proyecto.imagen} alt={proyecto.titulo} />
+                <Card.Body>
+                  <Card.Title>{proyecto.titulo}</Card.Title>
+                  <Card.Text>{proyecto.descripcion}</Card.Text>
+                </Card.Body>
+              </Card>
+            </a>
           </Col>
         ))}
       </Row>
