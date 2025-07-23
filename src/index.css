@@ -25,20 +25,20 @@
   color: #333;
 }
 body {
-  background: linear-gradient(135deg, #064e3b, #047857);
-  /*background-color: #f0f0f0;  un gris claro */
+  background: linear-gradient(270deg, #064e3b, #047857, #0f766e);
+  background-size: 600% 600%;
+  animation: gradientFlow 15s ease infinite;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color:#ffff;
+  color: #ffffff;
 }
 
-/*background: linear-gradient(135deg, #064e3b, #047857);
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Poppins', sans-serif; /* si ya usás Poppins u otra fuente */
-  /*color: white; /* para que el texto contraste bien */
-
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 .second {
   font-family: "DM Serif Text", serif;
