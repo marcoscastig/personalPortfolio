@@ -143,3 +143,21 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 .card-animate.visible {
   animation: fadeZoomIn 0.6s ease forwards;
 }
+
+.second:focus,
+.second:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease;
+  border-color: #10b981;
+  color: white;
+}
+
+.custom-submit-button:hover {
+  background-color: #10b981 !important;
+  color: white !important;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+
+

@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
+
 
 export default function Contact() {
   const form = useRef();
@@ -31,8 +33,26 @@ export default function Contact() {
 
   return (
     <Container className="my-5">
-      <h2 className="text-center mb-4">Contáctame</h2>
+      <motion.h2 
+      className="text-center mb-4"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}>Contáctame</motion.h2>
 
+      <motion.p
+      className="second text-center mb-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.4, duration: 0.6 }}
+    >
+      Llena el formulario y contáctame
+    </motion.p>
+
+     <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, duration: 0.6 }}
+    ></motion.div>
      
 
       <Form
@@ -75,10 +95,15 @@ export default function Contact() {
       </Form>
 
       {status && (
-        <p className="text-center mt-3" style={{ color: status.includes("error") ? "red" : "white" }}>
-          {status}
-        </p>
-      )}
+  <motion.p
+    className="text-center mt-3"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    style={{ color: status.includes("error") ? "red" : "white" }}
+  >
+    {status}
+  </motion.p>
+)}
 
       <div className="mt-5 text-center">
         <p>
