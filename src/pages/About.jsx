@@ -7,7 +7,7 @@ export default function About() {
             className="text-center mb-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}>Mis Proyectos</motion.h2>
+            transition={{ duration: 0.6 }}>Sobre mi</motion.h2>
             <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
