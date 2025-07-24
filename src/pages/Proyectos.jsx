@@ -4,6 +4,7 @@ import japImg from '../assets/japflix.png';
 import ecommerceImg from '../assets/Ecommerce.png';
 import crudImg from '../assets/crud.jpg';
 import calcImg from '../assets/calc.jpg';
+import { motion } from "framer-motion";
 
 const proyectos = [
    {
@@ -66,7 +67,17 @@ export default function Proyectos() {
 
   return (
     <div className="text-center">
-      <h2 className="mb-4">Mis Proyectos</h2>
+       <motion.h2 
+            className="text-center mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}>Mis Proyectos</motion.h2>
+            <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, duration: 0.6 }}
+    ></motion.div>
+      
       <Row xs={1} sm={2} md={2} lg={4} className="g-4">
         {proyectos.map((proyecto, index) => (
           <Col key={index} className="h-100">
