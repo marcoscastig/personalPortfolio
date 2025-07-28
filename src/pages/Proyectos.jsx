@@ -141,8 +141,9 @@ const handleArrowClick = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="d-none d-lg-block w-100"
+        style={{ color: "inherit", textDecoration: "none" }}
       >
-        <Card className="h-100 shadow project-card d-flex flex-column">
+        <Card className="h-100 shadow project-card d-flex flex-column cursor-hover">
           <Card.Img variant="top" src={proyecto.imagen} alt={proyecto.titulo} />
           <Card.Body className="d-flex flex-column">
             <Card.Title>{proyecto.titulo}</Card.Title>
@@ -154,7 +155,7 @@ const handleArrowClick = () => {
 
     {/* Flecha solo después de la primera tarjeta (índice 0) */}
    {index === 0 && showArrow && (
-  <Col xs={12} className="d-lg-none text-center my-2">
+  <Col xs={12} className="d-sm-none text-center my-2">
     <motion.div
       onClick={handleArrowClick}
       style={{ cursor: "pointer" }}

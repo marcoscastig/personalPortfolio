@@ -107,6 +107,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 
 .project-card .card-img-top {
   height: 200px; /* o el alto que prefieras */
+  min-height: 200px; /* o el alto que prefieras */
   object-fit: cover;  /* recorta la imagen sin deformarla */
   width: 100%;
 }
@@ -117,6 +118,10 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
   flex-direction: column;
   justify-content: space-between;
   min-height: 150px;
+}
+
+.cursor-hover {
+ cursor: pointer;
 }
 
 .project-card .card-text {

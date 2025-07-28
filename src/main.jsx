@@ -4,6 +4,7 @@ import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'  // Importar estilos de Bootstrap
 import './index.css'
 
+
 if (sessionStorage.redirect) {
   const redirect = sessionStorage.redirect;
   sessionStorage.removeItem("redirect");
