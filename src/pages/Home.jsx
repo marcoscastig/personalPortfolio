@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
+import heroVideo from '../assets/hero.mp4'
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
         playsInline
         className="hero-video"
       >
-        <source src="src/assets/hero.mp4" type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
         Tu navegador no soporta video HTML5.
       </video>
 
