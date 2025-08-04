@@ -196,3 +196,29 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
   box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
   transition: all 0.3s ease;
 }
+
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.6; /* Opcional: para mejor contraste del texto */
+}
+
+.z-1 {
+  z-index: 1;
+}
