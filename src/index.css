@@ -222,3 +222,48 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 .z-1 {
   z-index: 1;
 }
+
+.skills-slider {
+  overflow: hidden;
+  width: 100%;
+}
+
+.skills-track {
+  display: flex;
+  gap: 1rem;
+  white-space: nowrap;
+  animation: scroll-left 15s linear infinite;
+
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
+}
+
+.badge {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+
+
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+.nav-gap > .nav-item {
+  margin-left: 5rem;
+}
+.nav-gap > .nav-item:first-child {
+  margin-left: 0;
+}

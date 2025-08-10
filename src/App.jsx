@@ -34,29 +34,29 @@ export default function App() {
        
         <hr className="border border-dark opacity-50 mx-auto w-75" />
 
-        <Nav variant="pills" className=" second justify-content-center mb-4">
-          <Nav.Item>
-            <Nav.Link as={NavLink} to="/" end>
-              Home
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link as={NavLink} to="/about">
-              About
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link as={NavLink} to="/contact">
-              Contact
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link as={NavLink} to="/proyectos">
-              Proyectos
-            </Nav.Link>
-          </Nav.Item>
+        <Nav variant="pills" className="second justify-content-center mb-4 nav-gap">
+  <Nav.Item>
+    <Nav.Link as={NavLink} to="/" end>
+      Home
+    </Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link as={NavLink} to="/about">
+      About
+    </Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link as={NavLink} to="/contact">
+      Contact
+    </Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link as={NavLink} to="/proyectos">
+      Proyectos
+    </Nav.Link>
+  </Nav.Item>
+</Nav>
 
-        </Nav>
 
         <Routes>
           <Route path="/" element={<Home />} />
