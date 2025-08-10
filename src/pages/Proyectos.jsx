@@ -1,22 +1,19 @@
-import React from "react";
-import { Card, Row, Col, Button } from "react-bootstrap";
-import japImg from '../assets/japflix.png';
-import ecommerceImg from '../assets/Ecommerce.png';
-import crudImg from '../assets/crud.jpg';
-import calcImg from '../assets/calc.jpg';
+import React, { useEffect, useRef, useState } from "react";
+import { Card, Row, Col } from "react-bootstrap";
+import japImg from "../assets/japflix.png";
+import ecommerceImg from "../assets/Ecommerce.png";
+import crudImg from "../assets/crud.jpg";
+import calcImg from "../assets/calc.jpg";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-
-
 
 const proyectos = [
-   {
+  {
     titulo: "E-Commerce",
     descripcion: "Proyecto final de curso 2022, usando HTML CCS y JavaScript",
     imagen: ecommerceImg,
     url: "https://marcoscastig.github.io/E_commerce_Jap2022/",
   },
-    {
+  {
     titulo: "Movies",
     descripcion: "Proyecto de películas con Javascript, HTML y CSS",
     imagen: japImg,
@@ -24,156 +21,197 @@ const proyectos = [
   },
   {
     titulo: "Calculator",
-    descripcion: "Una calculador aimple que hice por diversion",
+    descripcion: "Una calculadora simple que hice por diversión",
     imagen: calcImg,
     url: "https://marcoscastig.github.io/Calculator/",
   },
   {
     titulo: "CRUD Api",
-    descripcion: "MockApi es una herramienta que permite realizar operaciones usando la interface RESTful.",
+    descripcion:
+      "MockApi es una herramienta que permite realizar operaciones usando la interface RESTful.",
     imagen: crudImg,
     url: "https://marcoscastig.github.io/Crud-MockApi/",
   },
-  // ...otros proyectos
 ];
-
-// Función para detectar móvil (simplificada)
-const isMobile = () => {
-  if (typeof navigator === "undefined") return false;
-  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-};
-
-
 
 export default function Proyectos() {
   const cardsRef = useRef([]);
+  const mobileScrollRef = useRef(null);
 
+  // Animación cuando las tarjetas entran en pantalla (desktop)
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target); // Solo se anima la primera vez
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    cardsRef.current.forEach(card => {
+    cardsRef.current.forEach((card) => {
       if (card) observer.observe(card);
     });
 
     return () => observer.disconnect();
   }, []);
 
-const [showArrow, setShowArrow] = useState(true);
-const arrowDismissed = useRef(false); // persiste aunque el componente se renderice de nuevo
+  // Flecha
+  const [showArrow, setShowArrow] = useState(true);
+  const arrowDismissed = useRef(false);
 
-useEffect(() => {
-  const handleScroll = () => {
-    if (!arrowDismissed.current && window.scrollY > 50) {
-      setShowArrow(false);
-      arrowDismissed.current = true;
+  // Ocultar flecha al hacer scroll manual
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!arrowDismissed.current && mobileScrollRef.current) {
+        const scrollLeft = mobileScrollRef.current.scrollLeft;
+        if (scrollLeft > 20) {
+          setShowArrow(false);
+          arrowDismissed.current = true;
+        }
+      }
+    };
+
+    const container = mobileScrollRef.current;
+    if (container) container.addEventListener("scroll", handleScroll);
+
+    return () => {
+      if (container) container.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleArrowClick = () => {
+    if (mobileScrollRef.current) {
+      const cardWidth = mobileScrollRef.current.firstChild.offsetWidth;
+      mobileScrollRef.current.scrollBy({
+        left: cardWidth,
+        behavior: "smooth",
+      });
     }
+    setShowArrow(false);
+    arrowDismissed.current = true;
   };
-
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
-
-const handleArrowClick = () => {
-  const offset = window.innerHeight * 0.6; // bajamos un 60% del alto de la pantalla
-  window.scrollBy({ top: offset, behavior: "smooth" });
-  setShowArrow(false); // ocultamos la flecha
-  arrowDismissed.current = true;
-};
-
 
   return (
     <div className="text-center">
-       <motion.h2 
-            className="text-center mb-4"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}>Mis Proyectos</motion.h2>
-            <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6, duration: 0.6 }}
-    ></motion.div>
-      
-      <Row xs={1} sm={2} md={2} lg={4} className="g-4">
-  {proyectos.map((proyecto, index) => (
-  <React.Fragment key={index}>
-    <Col className="d-flex">
-      <div
-        ref={el => (cardsRef.current[index] = el)}
-        className="card-animate d-lg-none w-100"
+      <motion.h2
+        className="text-center mb-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
       >
-        <Card className="project-card h-100 shadow d-flex flex-column">
-          <Card.Img variant="top" src={proyecto.imagen} alt={proyecto.titulo} />
-          <Card.Body className="d-flex flex-column">
-            <Card.Title>{proyecto.titulo}</Card.Title>
-            <Card.Text className="flex-grow-1">{proyecto.descripcion}</Card.Text>
-            <motion.a
-  href={proyecto.url}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="btn btn-primary mt-2"
-  whileHover={{ scale: 1.1 }}
-  whileTap={{ scale: 0.95 }}
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.4, delay: 0.2 }}
->
-  Ver proyecto
-</motion.a>
+        Mis Proyectos
+      </motion.h2>
 
-          </Card.Body>
-        </Card>
+      {/* Vista móvil con scroll horizontal */}
+      <div
+        ref={mobileScrollRef}
+        className="d-lg-none mb-4"
+        style={{
+          position: "relative",
+          overflowX: "auto",
+          display: "flex",
+          gap: "1rem",
+          padding: "0 1rem",
+          scrollSnapType: "x mandatory",
+        }}
+      >
+        {proyectos.map((proyecto, index) => (
+          <motion.div
+            key={index}
+            ref={(el) => (cardsRef.current[index] = el)}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.2, duration: 0.5 }}
+            style={{
+              minWidth: "85%",
+              maxWidth: "85%",
+              flex: "0 0 auto",
+              scrollSnapAlign: "center",
+              position: "relative",
+            }}
+          >
+            <Card className="project-card shadow d-flex flex-column h-100">
+              <Card.Img
+                variant="top"
+                src={proyecto.imagen}
+                alt={proyecto.titulo}
+                style={{ objectFit: "cover", height: "200px" }}
+              />
+              <Card.Body className="d-flex flex-column">
+                <Card.Title>{proyecto.titulo}</Card.Title>
+                <Card.Text className="flex-grow-1">
+                  {proyecto.descripcion}
+                </Card.Text>
+                <motion.a
+                  href={proyecto.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary mt-2"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Ver proyecto
+                </motion.a>
+              </Card.Body>
+            </Card>
+
+            {/* Flecha flotante solo en la primera tarjeta */}
+            {index === 0 && showArrow && (
+              <motion.div
+                onClick={handleArrowClick}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  right: "-1.5rem",
+                  transform: "translateY(-50%)",
+                  background: "rgba(0,0,0,0.5)",
+                  borderRadius: "50%",
+                  padding: "0.4rem",
+                  cursor: "pointer",
+                  zIndex: 10,
+                }}
+                initial={{ x: 0 }}
+                animate={{ x: [0, 5, 0] }}
+                transition={{ repeat: Infinity, duration: 1.2 }}
+              >
+                <i className="bi bi-chevron-right fs-4 text-light" />
+              </motion.div>
+            )}
+          </motion.div>
+        ))}
       </div>
 
-      {/* Versión escritorio */}
-      <a
-        href={proyecto.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="d-none d-lg-block w-100"
-        style={{ color: "inherit", textDecoration: "none" }}
-      >
-        <Card className="h-100 shadow project-card d-flex flex-column cursor-hover">
-          <Card.Img variant="top" src={proyecto.imagen} alt={proyecto.titulo} />
-          <Card.Body className="d-flex flex-column">
-            <Card.Title>{proyecto.titulo}</Card.Title>
-            <Card.Text className="flex-grow-1">{proyecto.descripcion}</Card.Text>
-          </Card.Body>
-        </Card>
-      </a>
-    </Col>
-
-    {/* Flecha solo después de la primera tarjeta (índice 0) */}
-   {index === 0 && showArrow && (
-  <Col xs={12} className="d-sm-none text-center my-2">
-    <motion.div
-      onClick={handleArrowClick}
-      style={{ cursor: "pointer" }}
-      initial={{ y: 0, opacity: 1 }}
-      animate={{ y: [0, 10, 0], opacity: [1, 1, 1] }}
-      transition={{ repeat: Infinity, duration: 1.5 }}
-    >
-      <i className="bi bi-chevron-down fs-1 text-light" />
-    </motion.div>
-  </Col>
-)}
-
-
-  </React.Fragment>
-))}
-</Row>
-
-      
+      {/* Vista escritorio con grid */}
+      <Row xs={1} sm={2} md={2} lg={4} className="g-4 d-none d-lg-flex">
+        {proyectos.map((proyecto, index) => (
+          <Col key={index} className="d-flex">
+            <a
+              href={proyecto.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "inherit", textDecoration: "none", width: "100%" }}
+            >
+              <Card className="h-100 shadow project-card d-flex flex-column cursor-hover">
+                <Card.Img
+                  variant="top"
+                  src={proyecto.imagen}
+                  alt={proyecto.titulo}
+                />
+                <Card.Body className="d-flex flex-column">
+                  <Card.Title>{proyecto.titulo}</Card.Title>
+                  <Card.Text className="flex-grow-1">
+                    {proyecto.descripcion}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </a>
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 }
