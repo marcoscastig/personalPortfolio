@@ -267,3 +267,13 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 .nav-gap > .nav-item:first-child {
   margin-left: 0;
 }
+
+
+.nav {
+  background: transparent !important;
+}
+
+.nav:hover {
+  background: transparent !important;
+}
+
