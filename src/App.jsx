@@ -41,60 +41,72 @@ export default function App() {
         <Navbar
   bg=""
   expand="md"
-  className="mb-4 justify-content-center"
+  className="mb-4"
   expanded={expanded}
   onToggle={(isExpanded) => setExpanded(isExpanded)}
 >
-  {/* Empuja toggle a la derecha */}
-  
-<Navbar.Toggle
-  as={motion.button} // Esto hace que sea un elemento animable
-  aria-controls="basic-navbar-nav"
-  className="ms-auto"
-  animate={{
-    scale: [1, 1.1, 1], // Crece y vuelve
-  }}
-  transition={{
-    repeat: Infinity, // Se repite para siempre
-    duration: 1.5, // Velocidad del pulso
-    ease: "easeInOut",
-  }}
-/>
-  
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mx-auto text-center">
-            
-              <Nav.Item>
-                <Nav.Link as={() => (
-                  <AnimatedNavLink to="/" end onClick={handleNavClick}>
-                    Home
-                  </AnimatedNavLink>
-                )} />
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={() => (
-                  <AnimatedNavLink to="/about" onClick={handleNavClick}>
-                    About
-                  </AnimatedNavLink>
-                )} />
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={() => (
-                  <AnimatedNavLink to="/contact" onClick={handleNavClick}>
-                    Contact
-                  </AnimatedNavLink>
-                )} />
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={() => (
-                  <AnimatedNavLink to="/proyectos" onClick={handleNavClick}>
-                    Proyectos
-                  </AnimatedNavLink>
-                )} />
-              </Nav.Item>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+  <Container className="d-flex justify-content-start align-items-center">
+    {/* Toggle a la derecha en pantallas md- */}
+    <Navbar.Toggle
+      as={motion.button}
+      aria-controls="basic-navbar-nav"
+      animate={{ scale: [1, 1.1, 1] }}
+      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+      style={{
+        border: "2px solid white",
+        borderRadius: "4px",
+        background: "transparent",
+      }}
+      className="ms-auto ms-md-0" // toggle a la derecha solo en sm, izquierda en md+
+    />
+
+
+    
+
+    {/* Menú de links a la derecha en md+, oculto en xs-sm */}
+    <Navbar.Collapse id="basic-navbar-nav" className="ms-auto">
+      <Nav className="d-flex gap-3">
+        {/* Tus Nav.Items */}
+        <Nav.Item>
+          <Nav.Link
+            as={() => (
+              <AnimatedNavLink to="/" end onClick={handleNavClick}>
+                Home
+              </AnimatedNavLink>
+            )}
+          />
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            as={() => (
+              <AnimatedNavLink to="/about" onClick={handleNavClick}>
+                About
+              </AnimatedNavLink>
+            )}
+          />
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            as={() => (
+              <AnimatedNavLink to="/contact" onClick={handleNavClick}>
+                Contact
+              </AnimatedNavLink>
+            )}
+          />
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            as={() => (
+              <AnimatedNavLink to="/proyectos" onClick={handleNavClick}>
+                Proyectos
+              </AnimatedNavLink>
+            )}
+          />
+        </Nav.Item>
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
 
         <Routes>
           <Route path="/" element={<Home />} />

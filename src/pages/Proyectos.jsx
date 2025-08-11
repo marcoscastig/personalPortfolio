@@ -5,6 +5,7 @@ import ecommerceImg from "../assets/Ecommerce.png";
 import crudImg from "../assets/crud.jpg";
 import calcImg from "../assets/calc.jpg";
 import { motion } from "framer-motion";
+import Contacto from '../components/Contacto';
 
 const proyectos = [
   {
@@ -183,35 +184,45 @@ export default function Proyectos() {
             )}
           </motion.div>
         ))}
+        
       </div>
 
       {/* Vista escritorio con grid */}
       <Row xs={1} sm={2} md={2} lg={4} className="g-4 d-none d-lg-flex">
-        {proyectos.map((proyecto, index) => (
-          <Col key={index} className="d-flex">
-            <a
-              href={proyecto.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "inherit", textDecoration: "none", width: "100%" }}
-            >
-              <Card className="h-100 shadow project-card d-flex flex-column cursor-hover">
-                <Card.Img
-                  variant="top"
-                  src={proyecto.imagen}
-                  alt={proyecto.titulo}
-                />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title>{proyecto.titulo}</Card.Title>
-                  <Card.Text className="flex-grow-1">
-                    {proyecto.descripcion}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </a>
-          </Col>
-        ))}
-      </Row>
+  {proyectos.map((proyecto, index) => (
+    <Col key={index} className="d-flex">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.15, duration: 0.6 }}
+        style={{ width: "100%" }}
+      >
+        <a
+          href={proyecto.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "inherit", textDecoration: "none", width: "100%" }}
+        >
+          <Card className="h-100 shadow project-card d-flex flex-column cursor-hover">
+            <Card.Img
+              variant="top"
+              src={proyecto.imagen}
+              alt={proyecto.titulo}
+            />
+            <Card.Body className="d-flex flex-column">
+              <Card.Title>{proyecto.titulo}</Card.Title>
+              <Card.Text className="flex-grow-1">
+                {proyecto.descripcion}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </a>
+      </motion.div>
+    </Col>
+  ))}
+</Row>
+
+      <Contacto/>
     </div>
   );
 }

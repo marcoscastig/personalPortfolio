@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import heroVideo from '../assets/hero.mp4'
 import personalFotoImg from "../assets/personalFoto.jpg";
+import Contacto from '../components/Contacto';
 
 
 export default function Home() {
@@ -54,9 +55,7 @@ export default function Home() {
         >
           <h3>habilidades</h3>
           <p className="lead">
-            🚀 Desarrollador apasionado por convertir ideas en proyectos reales.
-            Experiencia en C/C++, React y desarrollo web moderno.
-            Amante de los desafíos y de seguir aprendiendo cada día.
+            🚀 Estudiante de Ingeniería en Computación en la Universidad de la República (UdelaR), con experiencia en JavaScript, SQL, C/C++, React y desarrollo web moderno. Desarrollo proyectos personales que me permiten aplicar y profundizar mis conocimientos técnicos. Me enfoco en la resolución de problemas y mantengo un compromiso constante con el aprendizaje y el crecimiento profesional.
           </p>
 
           <div className="skills-slider">
@@ -80,41 +79,7 @@ export default function Home() {
         </motion.div>
 
         {/* Contacto */}
-        <motion.div
-          className="text-center mt-2 w-100"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h3 className="mb-2 text-white">Contacto</h3>
-          <div className="d-flex justify-content-center gap-4">
-            <a
-              href="https://github.com/tu_usuario"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="text-light fs-4"
-            >
-              <i className="bi bi-github"></i>
-            </a>
-            <a
-              href="https://linkedin.com/in/tu_usuario"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-light fs-4"
-            >
-              <i className="bi bi-linkedin"></i>
-            </a>
-            <a
-              href="mailto:tuemail@dominio.com"
-              aria-label="Email"
-              className="text-light fs-4"
-            >
-              <i className="bi bi-envelope-fill"></i>
-            </a>
-          </div>
-        </motion.div>
+        <Contacto/>
       </div>
     </div>
   );
