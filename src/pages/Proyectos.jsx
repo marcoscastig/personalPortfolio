@@ -4,6 +4,7 @@ import japImg from "../assets/japflix.png";
 import ecommerceImg from "../assets/Ecommerce.png";
 import crudImg from "../assets/crud.jpg";
 import calcImg from "../assets/calc.jpg";
+import rickAndMortyImg from "../assets/rickAndMorty.jpg";
 import { motion } from "framer-motion";
 import Contacto from '../components/Contacto';
 
@@ -13,6 +14,19 @@ const proyectos = [
     descripcion: "Proyecto final de curso 2022, usando HTML CCS y JavaScript",
     imagen: ecommerceImg,
     url: "https://marcoscastig.github.io/E_commerce_Jap2022/",
+  },
+  {
+    titulo: "Rick and Morty",
+    descripcion: "Simple pagina hecha con React",
+    imagen: rickAndMortyImg,
+    url: "https://rickandmortyappreactreact.netlify.app/",
+  },
+  {
+    titulo: "CRUD Api",
+    descripcion:
+      "MockApi es una herramienta que permite realizar operaciones usando la interface RESTful.",
+    imagen: crudImg,
+    url: "https://marcoscastig.github.io/Crud-MockApi/",
   },
   {
     titulo: "Movies",
@@ -26,13 +40,7 @@ const proyectos = [
     imagen: calcImg,
     url: "https://marcoscastig.github.io/Calculator/",
   },
-  {
-    titulo: "CRUD Api",
-    descripcion:
-      "MockApi es una herramienta que permite realizar operaciones usando la interface RESTful.",
-    imagen: crudImg,
-    url: "https://marcoscastig.github.io/Crud-MockApi/",
-  },
+  
 ];
 
 export default function Proyectos() {
