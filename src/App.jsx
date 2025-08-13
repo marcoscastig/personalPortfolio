@@ -113,8 +113,8 @@ export default function App() {
           </Routes>
         </Suspense>
 
-        <Footer />
       </Container>
+        
     </HashRouter>
   );
 }
