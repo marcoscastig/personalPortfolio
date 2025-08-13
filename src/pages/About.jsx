@@ -1,70 +1,39 @@
-import { useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-import formacionImg from "../assets/formacion.jpg";
-import formacionImgWebp from "../assets/formacion.webp";
-import iaImg from "../assets/ia.jpg";
-import iaImgWebp from "../assets/ia.webp";
-import desarrolloWebImg from "../assets/desarrolloWeb.jpg";
-import desarrolloWebImgWebp from "../assets/desarrolloWeb.webp";
-import metaImg from "../assets/meta.jpg";
-import metaImgWebp from "../assets/meta.webp";
+import formacionImg from "../assets/formacion.webp";
+import formacionPlaceholder from "../assets/formacion.jpg";
+import desarrolloWebImg from "../assets/desarrolloWeb.webp";
+import desarrolloWebPlaceholder from "../assets/desarrolloWeb.jpg";
+import iaImg from "../assets/ia.webp";
+import iaPlaceholder from "../assets/ia.jpg";
+import metaImg from "../assets/meta.webp";
+import metaPlaceholder from "../assets/meta.jpg";
 import Contacto from '../components/Contacto';
 
-function useControlledScrollOnMobile() {
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 1024;
-    if (!isMobile) return;
-
-    let targetScroll = window.scrollY;
-    let currentScroll = window.scrollY;
-    const maxStep = 50; // Máximo píxeles que se pueden mover por frame
-
-    const smoothStep = () => {
-      const diff = targetScroll - currentScroll;
-      if (Math.abs(diff) > 0.5) {
-        // Limitamos el paso
-        currentScroll += Math.sign(diff) * Math.min(Math.abs(diff), maxStep);
-        window.scrollTo(0, currentScroll);
-        requestAnimationFrame(smoothStep);
-      }
-    };
-
-    const handleWheelOrTouch = () => {
-      targetScroll = window.scrollY;
-      requestAnimationFrame(smoothStep);
-    };
-
-    window.addEventListener("scroll", handleWheelOrTouch, { passive: true });
-    return () => window.removeEventListener("scroll", handleWheelOrTouch);
-  }, []);
-}
-
 export default function About() {
-   useControlledScrollOnMobile();
   const sections = [
     {
       img: formacionImg,
-      imgWebp: formacionImgWebp,
+      placeholder: formacionPlaceholder,
       title: "Mi formación",
-      text: "Soy estudiante de Ingeniería en Computación en la Universidad de la República (UdelaR), actualmente finalizando el primer año de la carrera. Egresé del curso “Jóvenes a Programar” en 2022, donde descubrí mi verdadera vocación por la tecnología.  Me apasiona aprender y aplicar mis conocimientos en proyectos reales, especialmente en desarrollo web y análisis de datos. Valoro el trabajo en equipo, la perseverancia y la creatividad para resolver problemas complejos. Además, en mi tiempo libre disfruto adquirir nuevos conocimientos en diversas áreas para mantenerme en constante evolución. Estoy comprometido con el aprendizaje continuo y en contribuir de manera positiva a los equipos y proyectos en los que participo.",
+      text: "Soy estudiante de Ingeniería en Computación en la Universidad de la República (UdelaR), actualmente finalizando el primer año de la carrera. Egresé del curso “Jóvenes a Programar” en 2022, donde descubrí mi verdadera vocación por la tecnología. Me apasiona aprender y aplicar mis conocimientos en proyectos reales, especialmente en desarrollo web y análisis de datos. Valoro el trabajo en equipo, la perseverancia y la creatividad para resolver problemas complejos. Además, en mi tiempo libre disfruto adquirir nuevos conocimientos en diversas áreas para mantenerme en constante evolución. Estoy comprometido con el aprendizaje continuo y en contribuir de manera positiva a los equipos y proyectos en los que participo.",
     },
     {
       img: desarrolloWebImg,
-      imgWebp: desarrolloWebImgWebp,
+      placeholder: desarrolloWebPlaceholder,
       title: "Desarrollo Web",
       text: "Desde 2022 he desarrollado proyectos web utilizando HTML, CSS y JavaScript, dominando estas tecnologías de forma fluida. Trabajo con bibliotecas como Bootstrap, que facilitan la creación de interfaces responsivas y funcionales. También he creado varios proyectos frontend con React y desarrollado sitios completos integrando backend con SQL/MySQL y Node.js. Mis conocimientos abarcan todo el ciclo de desarrollo web, desde el diseño y la programación hasta la implementación y el mantenimiento de aplicaciones. Varios de estos proyectos están disponibles para que los puedas ver en la sección de proyectos.",
     },
     {
       img: iaImg,
-      imgWebp: iaImgWebp,
+      placeholder: iaPlaceholder,
       title: "Interés en IA",
       text: "Tengo conocimientos en inteligencia artificial y la aplico para agilizar y potenciar la creación y producción de componentes. Sé aprovechar el poder de las herramientas de IA para impulsar el desarrollo de soluciones innovadoras. Con una base sólida que me permite trabajar de forma independiente, integro la IA de manera estratégica y constructiva, utilizando prompts efectivos para maximizar su rendimiento y precisión.",
     },
     {
       img: metaImg,
-      imgWebp: metaImgWebp,
+      placeholder: metaPlaceholder,
       title: "Visión y objetivos",
       text: "Mi intención es crecer y consolidarme como desarrollador de software. He estado preparándome con dedicación, adquiriendo conocimientos y habilidades, y estoy listo para aprovechar la oportunidad que me permita demostrar mi compromiso y aportar valor en un entorno profesional. Me caracterizo por ser responsable, perseverante y abierto al aprendizaje continuo. Valoro el trabajo en equipo y la colaboración para lograr objetivos comunes. A mediano plazo, aspiro a participar en proyectos desafiantes y contribuir positivamente al crecimiento de la organización y mi desarrollo personal.",
     },
@@ -77,41 +46,30 @@ export default function About() {
     borderRadius: "0.5rem",
     border: "3px solid rgba(255, 255, 255, 0.3)",
     boxShadow: "0 4px 15px rgba(0,0,0,0.25)",
+    backgroundColor: "#111", // fondo oscuro mientras carga
   };
 
   return (
-    
-    <div className="container py-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-      <h2
-        className="text-center mb-5 text-white"
-        style={{ textTransform: "uppercase", letterSpacing: "2px" }}
-      >
+    <div className="container py-5" style={{ fontFamily: "'Bebas Neue', sans-serif", minHeight: "100vh" }}>
+      <h2 className="text-center mb-5 text-white" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
         Sobre mí
       </h2>
 
       {sections.map((sec, index) => (
-        <div
-          key={sec.title}
-          className="row align-items-center mb-5"
-        >
+        <div key={sec.title} className="row align-items-center mb-5">
           <div className={`col-md-6 mb-3 ${index % 2 === 0 ? "" : "order-md-2"}`}>
-            <picture>
-              <source srcSet={sec.imgWebp} type="image/webp" />
-              <LazyLoadImage
-                src={sec.img}
-                alt={sec.title}
-                style={imageStyle}
-                effect="blur"
-                threshold={200}
-              />
-            </picture>
+            <LazyLoadImage
+              src={sec.img}
+              alt={sec.title}
+              placeholderSrc={sec.placeholder}
+              style={imageStyle}
+              effect="blur"
+              threshold={200}
+            />
           </div>
 
           <div className={`col-md-6 ${index % 2 === 0 ? "" : "order-md-1"}`}>
-            <h4
-              className="text-white fw-bold"
-              style={{ textTransform: "uppercase", letterSpacing: "2px", marginBottom: "1rem" }}
-            >
+            <h4 className="text-white fw-bold" style={{ textTransform: "uppercase", letterSpacing: "2px", marginBottom: "1rem" }}>
               {sec.title}
             </h4>
             <p className="text-white" style={{ lineHeight: 1.5, fontWeight: 400 }}>
