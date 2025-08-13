@@ -12,33 +12,37 @@ import metaImg from "../assets/meta.jpg";
 import metaImgWebp from "../assets/meta.webp";
 import Contacto from '../components/Contacto';
 
-// Hook para suavizar scroll en móviles/tablets
-function useSmoothScrollOnMobile() {
+function useControlledScrollOnMobile() {
   useEffect(() => {
     const isMobile = window.innerWidth <= 1024;
     if (!isMobile) return;
 
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          window.scrollTo({
-            top: window.scrollY,
-            behavior: "smooth"
-          });
-          ticking = false;
-        });
-        ticking = true;
+    let targetScroll = window.scrollY;
+    let currentScroll = window.scrollY;
+    const maxStep = 50; // Máximo píxeles que se pueden mover por frame
+
+    const smoothStep = () => {
+      const diff = targetScroll - currentScroll;
+      if (Math.abs(diff) > 0.5) {
+        // Limitamos el paso
+        currentScroll += Math.sign(diff) * Math.min(Math.abs(diff), maxStep);
+        window.scrollTo(0, currentScroll);
+        requestAnimationFrame(smoothStep);
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleWheelOrTouch = () => {
+      targetScroll = window.scrollY;
+      requestAnimationFrame(smoothStep);
+    };
+
+    window.addEventListener("scroll", handleWheelOrTouch, { passive: true });
+    return () => window.removeEventListener("scroll", handleWheelOrTouch);
   }, []);
 }
 
 export default function About() {
-   useSmoothScrollOnMobile();
+   useControlledScrollOnMobile();
   const sections = [
     {
       img: formacionImg,
