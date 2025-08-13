@@ -74,7 +74,7 @@ export default function About() {
             <h4 className="text-white fw-bold" style={{ textTransform: "uppercase", letterSpacing: "2px", marginBottom: "1rem" }}>
               {sec.title}
             </h4>
-            <p className="text-white" style={{ lineHeight: 1.5, fontWeight: 400 }}>
+            <p className="text-white" style={{ lineHeight: 1.5, fontWeight: 400, textAlign: "justify" }}>
               {sec.text}
             </p>
           </div>
