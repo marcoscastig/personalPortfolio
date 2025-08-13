@@ -13,25 +13,31 @@
   cursor: pointer;
 }
 
-/* Opcional: efecto sutil al pasar mouse */
-.nav-link:hover {
-  color: #555; /* cambio sutil de color */
-  text-decoration: underline;
-}
 
-/* Opcional: que el link activo tenga un estilo suave */
-.nav-link.active {
-  font-weight: 600;
-  color: #333;
-}
 body {
-  background: linear-gradient(270deg, #064e3b, #047857, #0f766e);
+ /* background: linear-gradient(270deg, #064e3b, #047857, #0f766e);*/
+background: linear-gradient(-45deg, #000000, #0f2027, #2c5364, #000000);
+ 
+  animation: gradientMove 20s ease infinite;
+
+
   background-size: 600% 600%;
-  animation: gradientFlow 15s ease infinite;
+/*  animation: gradientFlow 15s ease infinite;*/
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #ffffff;
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes gradientFlow {
@@ -46,14 +52,14 @@ body {
   font-style: normal;
 }
 h1 {
- font-size: 4rem; /* agranda el texto */
-/*  margin-top: 4rem; /* lo baja respecto al borde superior */
- /* text-align: center; /* opcional: para que quede centrado */
+ font-size: 4rem; 
 }
 
 h1, h2, h3, h4, h5, h6, p, span, li, a {
   cursor: default;
 }
+
+
 
 /* Efecto sutil para las Nav.Link */
 .nav-link {
@@ -65,7 +71,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 
 /* Hover */
 .nav-link:hover {
-  color: #28a745; /* verde */
+  /*color: #28a745;  verde */
   border-bottom: 2px solid #28a745;
   text-decoration: none; /* sin subrayado default */
 }
