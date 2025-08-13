@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
@@ -11,7 +12,33 @@ import metaImg from "../assets/meta.jpg";
 import metaImgWebp from "../assets/meta.webp";
 import Contacto from '../components/Contacto';
 
+// Hook para suavizar scroll en móviles/tablets
+function useSmoothScrollOnMobile() {
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 1024;
+    if (!isMobile) return;
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          window.scrollTo({
+            top: window.scrollY,
+            behavior: "smooth"
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+}
+
 export default function About() {
+   useSmoothScrollOnMobile();
   const sections = [
     {
       img: formacionImg,
@@ -49,6 +76,7 @@ export default function About() {
   };
 
   return (
+    
     <div className="container py-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
       <h2
         className="text-center mb-5 text-white"
