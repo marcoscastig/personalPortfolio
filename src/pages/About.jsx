@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
@@ -11,6 +10,7 @@ import desarrolloWebImgWebp from "../assets/desarrolloWeb.webp";
 import metaImg from "../assets/meta.jpg";
 import metaImgWebp from "../assets/meta.webp";
 import Contacto from '../components/Contacto';
+
 export default function About() {
   const sections = [
     {
@@ -50,24 +50,17 @@ export default function About() {
 
   return (
     <div className="container py-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-      <motion.h2
+      <h2
         className="text-center mb-5 text-white"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
         style={{ textTransform: "uppercase", letterSpacing: "2px" }}
       >
         Sobre mí
-      </motion.h2>
+      </h2>
 
       {sections.map((sec, index) => (
-        <motion.div
+        <div
           key={sec.title}
           className="row align-items-center mb-5"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
         >
           <div className={`col-md-6 mb-3 ${index % 2 === 0 ? "" : "order-md-2"}`}>
             <picture>
@@ -77,25 +70,23 @@ export default function About() {
                 alt={sec.title}
                 style={imageStyle}
                 effect="blur"
-                threshold={200} // Empieza a cargar antes
+                threshold={200}
               />
             </picture>
           </div>
 
           <div className={`col-md-6 ${index % 2 === 0 ? "" : "order-md-1"}`}>
-            <motion.div>
-              <h4
-                className="text-white fw-bold"
-                style={{ textTransform: "uppercase", letterSpacing: "2px", marginBottom: "1rem" }}
-              >
-                {sec.title}
-              </h4>
-              <p className="text-white" style={{ lineHeight: 1.5, fontWeight: 400 }}>
-                {sec.text}
-              </p>
-            </motion.div>
+            <h4
+              className="text-white fw-bold"
+              style={{ textTransform: "uppercase", letterSpacing: "2px", marginBottom: "1rem" }}
+            >
+              {sec.title}
+            </h4>
+            <p className="text-white" style={{ lineHeight: 1.5, fontWeight: 400 }}>
+              {sec.text}
+            </p>
           </div>
-        </motion.div>
+        </div>
       ))}
 
       <Contacto />
