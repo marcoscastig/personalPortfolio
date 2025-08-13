@@ -53,7 +53,7 @@ export default function Home() {
           transition={{ delay: 0.4, duration: 0.8 }}
         >
           <h3>Habilidades</h3>
-          <p className="lead">
+          <p className="lead" style={{ textAlign: "justify" }}>
             🚀 Estudiante de Ingeniería en Computación en la Universidad de la República (UdelaR), con experiencia en JavaScript, SQL, C/C++, React y desarrollo web moderno. Desarrollo proyectos personales que me permiten aplicar y profundizar mis conocimientos técnicos. Me enfoco en la resolución de problemas y mantengo un compromiso constante con el aprendizaje y el crecimiento profesional.
           </p>
 
