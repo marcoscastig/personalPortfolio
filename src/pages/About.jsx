@@ -14,8 +14,8 @@ import Contacto from '../components/Contacto';
 export default function About() {
   const sections = [
     {
-      /*img: formacionImg,
-      imgWebp: formacionImgWebp,*/
+      img: formacionImg,
+      imgWebp: formacionImgWebp,
       title: "Mi formación",
       text: "Soy estudiante de Ingeniería en Computación en la Universidad de la República (UdelaR), actualmente finalizando el primer año de la carrera. Egresé del curso “Jóvenes a Programar” en 2022, donde descubrí mi verdadera vocación por la tecnología.  Me apasiona aprender y aplicar mis conocimientos en proyectos reales, especialmente en desarrollo web y análisis de datos. Valoro el trabajo en equipo, la perseverancia y la creatividad para resolver problemas complejos. Además, en mi tiempo libre disfruto adquirir nuevos conocimientos en diversas áreas para mantenerme en constante evolución. Estoy comprometido con el aprendizaje continuo y en contribuir de manera positiva a los equipos y proyectos en los que participo.",
     },
