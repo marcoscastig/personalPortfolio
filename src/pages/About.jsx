@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 import formacionImg from "../assets/formacion.jpg";
 import formacionImgWebp from "../assets/formacion.webp";
 import iaImg from "../assets/ia.jpg";
@@ -8,7 +11,6 @@ import desarrolloWebImgWebp from "../assets/desarrolloWeb.webp";
 import metaImg from "../assets/meta.jpg";
 import metaImgWebp from "../assets/meta.webp";
 import Contacto from '../components/Contacto';
-
 export default function About() {
   const sections = [
     {
@@ -62,21 +64,22 @@ export default function About() {
         <motion.div
           key={sec.title}
           className="row align-items-center mb-5"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: index * 0.15 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
         >
           <div className={`col-md-6 mb-3 ${index % 2 === 0 ? "" : "order-md-2"}`}>
-            <motion.picture whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }} style={{ display: "block" }}>
+            <picture>
               <source srcSet={sec.imgWebp} type="image/webp" />
-              <motion.img
+              <LazyLoadImage
                 src={sec.img}
                 alt={sec.title}
                 style={imageStyle}
-                loading="lazy"
+                effect="blur"
+                threshold={200} // Empieza a cargar antes
               />
-            </motion.picture>
+            </picture>
           </div>
 
           <div className={`col-md-6 ${index % 2 === 0 ? "" : "order-md-1"}`}>
