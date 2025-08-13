@@ -40,11 +40,21 @@ background: linear-gradient(-45deg, #000000, #0f2027, #2c5364, #000000);
   }
 }
 
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* En móviles: animación más lenta para ahorrar batería */
+@media (max-width: 768px) {
+  body {
+    animation: gradientMove 40s ease infinite;
+  }
 }
+
+/* Si el usuario tiene reducción de movimiento activada */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: gradientMove 60s ease infinite;
+  }
+}
+
+
 
 .second {
   font-family: "DM Serif Text", serif;
