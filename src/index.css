@@ -17,7 +17,7 @@
 body {
  /* background: linear-gradient(270deg, #064e3b, #047857, #0f766e);*/
 /*background: linear-gradient(-45deg, #001a0f, #003d1f, #006633, #001a0f);*/
- background-color: #28a745;
+ background-color: cornflowerblue;
   animation: gradientMove 20s ease infinite;
 
 
