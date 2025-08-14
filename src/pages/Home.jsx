@@ -1,12 +1,10 @@
-
 import { motion } from "framer-motion";
-
 import personalFotoImg from "../assets/personalFoto.jpg";
 import Contacto from '../components/Contacto';
 
 export default function Home() {
   return (
-    <div className="container vh-100 d-flex flex-column flex-md-row gap-4 py-4">
+    <div className="container d-flex flex-column gap-4 py-4" style={{ minHeight: "100vh" }}>
       <div className="row w-100">
         {/* Izquierda: foto, título, texto corto y botón CV */}
         <motion.div
@@ -25,7 +23,7 @@ export default function Home() {
             transition={{ duration: 0.3 }}
           />
 
-          {/* Texto pegado justo debajo */}
+          {/* Texto */}
           <div style={{ marginTop: "0.5rem", width: "100%" }}>
             <h1 className='text-center text-md-start' style={{ marginBottom: "0.25rem", textAlign: "left" }}>
               Bienvenid@ a mi portfolio
@@ -45,7 +43,7 @@ export default function Home() {
           </motion.a>
         </motion.div>
 
-        {/* Derecha: contenido descriptivo, habilidades y contacto */}
+        {/* Derecha: habilidades */}
         <motion.div
           className="col-12 col-md-6 px-4 text-white mb-4 mb-md-0"
           initial={{ opacity: 0, x: 50 }}
@@ -76,10 +74,10 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
-
-        {/* Contacto */}
-        <Contacto />
       </div>
+
+      {/* Contacto */}
+      <Contacto />
     </div>
   );
 }
