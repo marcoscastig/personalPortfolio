@@ -4,6 +4,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import AnimatedNavLink from './components/AnimatedNavLink.jsx';
 import Footer from './components/Footer';
+import heroImg from './assets/hero.jpg'; // tu imagen de fondo
 
 // 🔹 Lazy loading de las páginas
 const Home = lazy(() => import('./pages/Home.jsx'));
@@ -18,103 +19,141 @@ export default function App() {
 
   return (
     <HashRouter>
-      <Container className="mt-3 mt-md-5 text-center">
-        <motion.h1
-          className="mb-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Marcos Castiglioni
-        </motion.h1>
+      {/* Contenedor principal con fondo */}
+      <div
+        style={{
+          position: 'relative',
+          minHeight: '100vh',
+          width: '100%',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Imagen de fondo */}
+        <img
+          src={heroImg}
+          alt="Fondo"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: -2,
+          }}
+        />
 
-        <motion.h2
-          className="mb-4 text-muted"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          Programador y Desarrollador Web
-        </motion.h2>
+        {/* Overlay oscuro para resaltar los textos */}
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            zIndex: -1,
+          }}
+        />
 
-        <hr className="border border-dark opacity-50 mx-auto " />
+        <Container className="mt-3 mt-md-5 text-center" style={{ color: 'white' }}>
+          <motion.h1
+            className="mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Marcos Castiglioni
+          </motion.h1>
 
-        <Navbar
-          bg=""
-          expand="md"
-          className="mb-4"
-          expanded={expanded}
-          onToggle={(isExpanded) => setExpanded(isExpanded)}
-        >
-          <Container className="d-flex justify-content-start align-items-center">
-            <Navbar.Toggle
-              as={motion.button}
-              aria-controls="basic-navbar-nav"
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-              style={{
-                border: '2px solid white',
-                borderRadius: '4px',
-                background: 'transparent',
-              }}
-              className="ms-auto ms-md-0"
-            />
+          <motion.h2
+            className="mb-4 " style={{ color: '#0dfd91' }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Programador y Desarrollador Web
+          </motion.h2>
 
-            <Navbar.Collapse id="basic-navbar-nav" className="ms-auto">
-              <Nav className="d-flex gap-3">
-                <Nav.Item>
-                  <Nav.Link
-                    as={() => (
-                      <AnimatedNavLink to="/" end onClick={handleNavClick}>
-                        Inicio
-                      </AnimatedNavLink>
-                    )}
-                  />
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link
-                    as={() => (
-                      <AnimatedNavLink to="/about" onClick={handleNavClick}>
-                        Sobre mí
-                      </AnimatedNavLink>
-                    )}
-                  />
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link
-                    as={() => (
-                      <AnimatedNavLink to="/contact" onClick={handleNavClick}>
-                        Contacto
-                      </AnimatedNavLink>
-                    )}
-                  />
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link
-                    as={() => (
-                      <AnimatedNavLink to="/proyectos" onClick={handleNavClick}>
-                        Proyectos
-                      </AnimatedNavLink>
-                    )}
-                  />
-                </Nav.Item>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
+          <hr className="border border-dark opacity-50 mx-auto " />
 
-        {/* Suspense envuelve las rutas y muestra un loader mientras carga */}
-        <Suspense fallback={<div style={{ color: 'white', marginTop: '2rem' }}>Cargando...</div>}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/proyectos" element={<Proyectos />} />
-          </Routes>
-        </Suspense>
+          <Navbar
+            bg=""
+            expand="md"
+            className="mb-4"
+            expanded={expanded}
+            onToggle={(isExpanded) => setExpanded(isExpanded)}
+          >
+            <Container className="d-flex justify-content-start align-items-center">
+              <Navbar.Toggle
+                as={motion.button}
+                aria-controls="basic-navbar-nav"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+                style={{
+                  border: '2px solid white',
+                  borderRadius: '4px',
+                  background: 'transparent',
+                }}
+                className="ms-auto ms-md-0"
+              />
 
-      </Container>
+              <Navbar.Collapse id="basic-navbar-nav" className="ms-auto">
+                <Nav className="d-flex gap-3">
+                  <Nav.Item>
+                    <Nav.Link
+                      as={() => (
+                        <AnimatedNavLink to="/" end onClick={handleNavClick}>
+                          Inicio
+                        </AnimatedNavLink>
+                      )}
+                    />
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link
+                      as={() => (
+                        <AnimatedNavLink to="/about" onClick={handleNavClick}>
+                          Sobre mí
+                        </AnimatedNavLink>
+                      )}
+                    />
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link
+                      as={() => (
+                        <AnimatedNavLink to="/contact" onClick={handleNavClick}>
+                          Contacto
+                        </AnimatedNavLink>
+                      )}
+                    />
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link
+                      as={() => (
+                        <AnimatedNavLink to="/proyectos" onClick={handleNavClick}>
+                          Proyectos
+                        </AnimatedNavLink>
+                      )}
+                    />
+                  </Nav.Item>
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
+
+          {/* Suspense envuelve las rutas y muestra un loader mientras carga */}
+          <Suspense fallback={<div style={{ color: 'white', marginTop: '2rem' }}>Cargando...</div>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/proyectos" element={<Proyectos />} />
+            </Routes>
+          </Suspense>
+        </Container>
+
         
+      </div>
     </HashRouter>
   );
 }

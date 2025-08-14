@@ -15,43 +15,21 @@
 
 
 body {
- /* background: linear-gradient(270deg, #064e3b, #047857, #0f766e);*/
-background: linear-gradient(-45deg, #001a0f, #003d1f, #006633, #001a0f);
-/* background-color: cornflowerblue;*/
-  animation: gradientMove 20s ease infinite;
+
+margin: 0;
+  padding: 0;
+  background-image: url('./assets/hero.jpg'); /* ruta de tu imagen */
+  background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
 
 
   background-size: 600% 600%;
-/*  animation: gradientFlow 15s ease infinite;*/
+
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #ffffff;
-}
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* En móviles: animación más lenta para ahorrar batería */
-@media (max-width: 768px) {
-  body {
-    animation: gradientMove 40s ease infinite;
-  }
-}
-
-/* Si el usuario tiene reducción de movimiento activada */
-@media (prefers-reduced-motion: reduce) {
-  body {
-    animation: gradientMove 60s ease infinite;
-  }
 }
 
 
@@ -70,13 +48,12 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 }
 
 
-
 /* Efecto sutil para las Nav.Link */
 .nav-link {
   cursor: pointer;
   transition: color 0.3s ease, border-bottom 0.3s ease;
   border-bottom: 2px solid transparent;
-  color: inherit; /* mantiene el color original */
+  color: #1E90FF; /* mantiene el color original */
 }
 
 /* Hover */
@@ -97,6 +74,8 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 .nav-link {
   user-select: none; /* evita que puedas seleccionar texto al clickear o pasar el mouse */
 }
+
+
 
 .custom-submit-button {
   border: 1px solid #ccc !important; /* Cambiá el color del borde */
@@ -214,26 +193,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 }
 
 
-.hero-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  opacity: 0.6; /* Opcional: para mejor contraste del texto */
-}
 
 .z-1 {
   z-index: 1;
@@ -277,21 +237,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, a {
 }
 
 
-.nav-gap > .nav-item {
-  margin-left: 5rem;
-}
-.nav-gap > .nav-item:first-child {
-  margin-left: 0;
-}
 
-
-.nav {
-  background: transparent !important;
-}
-
-.nav:hover {
-  background: transparent !important;
-}
 
 
 

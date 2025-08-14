@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+
 import { motion } from "framer-motion";
-import heroVideo from '../assets/hero.mp4'
+
 import personalFotoImg from "../assets/personalFoto.jpg";
 import Contacto from '../components/Contacto';
 

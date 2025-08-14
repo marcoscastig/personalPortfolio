@@ -1,5 +1,7 @@
+
+
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function AnimatedNavLink({ to, end, children, onClick }) {
   return (
@@ -7,14 +9,14 @@ export default function AnimatedNavLink({ to, end, children, onClick }) {
       {({ isActive }) => (
         <motion.span
           onClick={onClick}
-          initial={{ opacity: 0.6, scale: 1, y: 0 }}
+          initial={{ opacity: 0.8, scale: 1, y: 0 }}
           animate={{
-            opacity: isActive ? 1 : 0.6,
+            opacity: isActive ? 1 : 0.8,
             scale: isActive ? 1.1 : 1,
             y: isActive ? -3 : 0,
-            color: isActive ? '#0dfd4991' : '#000',
+            color: isActive ? '#0dfd91' : '#E0E0E0', // activo: verde azulado, normal: gris claro
           }}
-          whileHover={{ scale: 1.05, y: -2, opacity: 1, color: '#0dfd4991' }}
+          whileHover={{ scale: 1.05, y: -2, opacity: 1, color: '#0dfd91' }} // hover: mismo verde azulado
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
           style={{
             backgroundColor: 'transparent',
@@ -30,6 +32,7 @@ export default function AnimatedNavLink({ to, end, children, onClick }) {
     </NavLink>
   );
 }
+
 
 
 
