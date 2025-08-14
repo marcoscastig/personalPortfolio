@@ -36,7 +36,7 @@ const proyectos = [
   },
   {
     titulo: "Calculator",
-    descripcion: "Una calculadora simple que hice por diversión",
+    descripcion: "Una calculadora basica que hice por diversión",
     imagen: calcImg,
     url: "https://marcoscastig.github.io/Calculator/",
   },

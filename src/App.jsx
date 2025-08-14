@@ -66,7 +66,7 @@ export default function App() {
                   <Nav.Link
                     as={() => (
                       <AnimatedNavLink to="/" end onClick={handleNavClick}>
-                        Home
+                        Inicio
                       </AnimatedNavLink>
                     )}
                   />
@@ -75,7 +75,7 @@ export default function App() {
                   <Nav.Link
                     as={() => (
                       <AnimatedNavLink to="/about" onClick={handleNavClick}>
-                        About
+                        Sobre mí
                       </AnimatedNavLink>
                     )}
                   />
@@ -84,7 +84,7 @@ export default function App() {
                   <Nav.Link
                     as={() => (
                       <AnimatedNavLink to="/contact" onClick={handleNavClick}>
-                        Contact
+                        Contacto
                       </AnimatedNavLink>
                     )}
                   />

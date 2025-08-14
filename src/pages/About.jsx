@@ -1,4 +1,5 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { motion } from "framer-motion";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 import formacionImg from "../assets/formacion.webp";
@@ -10,7 +11,6 @@ import iaPlaceholder from "../assets/ia.jpg";
 import metaImg from "../assets/meta.webp";
 import metaPlaceholder from "../assets/meta.jpg";
 import Contacto from '../components/Contacto';
-import crudImg from "../assets/crud.jpg";
 
 export default function About() {
   const sections = [
@@ -29,7 +29,6 @@ export default function About() {
     {
       img: iaImg,
       placeholder: iaPlaceholder,
-      
       title: "Interés en IA",
       text: "Tengo conocimientos en inteligencia artificial y la aplico para agilizar y potenciar la creación y producción de componentes. Sé aprovechar el poder de las herramientas de IA para impulsar el desarrollo de soluciones innovadoras. Con una base sólida que me permite trabajar de forma independiente, integro la IA de manera estratégica y constructiva, utilizando prompts efectivos para maximizar su rendimiento y precisión.",
     },
@@ -48,19 +47,46 @@ export default function About() {
     borderRadius: "0.5rem",
     border: "3px solid rgba(255, 255, 255, 0.3)",
     boxShadow: "0 4px 15px rgba(0,0,0,0.25)",
-    backgroundColor: "#111", // fondo oscuro mientras carga
+    backgroundColor: "#111",
   };
 
   return (
-    <div className="container py-5" style={{ fontFamily: "'Bebas Neue', sans-serif", minHeight: "100vh" }}>
-      <h2 className="text-center mb-5 text-white" style={{ textTransform: "uppercase", letterSpacing: "2px" }}>
+    <div
+      className="container py-5"
+      style={{ fontFamily: "'Bebas Neue', sans-serif", minHeight: "100vh" }}
+    >
+      <motion.h2
+        className="text-center mb-5 text-white"
+        style={{ textTransform: "uppercase", letterSpacing: "2px" }}
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
         Sobre mí
-      </h2>
+      </motion.h2>
 
       {sections.map((sec, index) => (
         <div key={sec.title} className="row align-items-center mb-5">
-          <div className={`col-md-6 mb-3 ${index % 2 === 0 ? "" : "order-md-2"}`}>
+          {/* Columna de imagen */}
+          <motion.div
+            className={`col-12 col-md-6 mb-3 ${index % 2 === 0 ? "" : "order-md-2"}`}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h4
+              className="text-white fw-bold"
+              style={{
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                marginBottom: "1rem",
+              }}
+            >
+              {sec.title}
+            </h4>
             <LazyLoadImage
+              className="img-fluid"
               src={sec.img}
               alt={sec.title}
               placeholderSrc={sec.placeholder}
@@ -68,16 +94,27 @@ export default function About() {
               effect="blur"
               threshold={200}
             />
-          </div>
+          </motion.div>
 
-          <div className={`col-md-6 ${index % 2 === 0 ? "" : "order-md-1"}`}>
-            <h4 className="text-white fw-bold" style={{ textTransform: "uppercase", letterSpacing: "2px", marginBottom: "1rem" }}>
-              {sec.title}
-            </h4>
-            <p className="text-white" style={{ lineHeight: 1.5, fontWeight: 400, textAlign: "justify" }}>
+          {/* Columna de texto */}
+          <motion.div
+            className={`col-12 col-md-6 ${index % 2 === 0 ? "" : "order-md-1"}`}
+            initial={{ opacity: 0, x: index % 2 === 0 ? 60 : -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <p
+              className="text-white mt-3 mt-md-0"
+              style={{
+                lineHeight: 1.5,
+                fontWeight: 400,
+                textAlign: "justify",
+              }}
+            >
               {sec.text}
             </p>
-          </div>
+          </motion.div>
         </div>
       ))}
 

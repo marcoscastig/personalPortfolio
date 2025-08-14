@@ -120,7 +120,7 @@ export default function Contact() {
         >
           <motion.button
             type="submit"
-            className="btn btn-outline-light px-4 custom-submit-button"
+            className="btn btn-outline-light px-4 custom-submit-button mb-4"
             whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(255,255,255,0.8)" }}
             whileTap={{ scale: 0.95 }}
           >
