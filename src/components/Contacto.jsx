@@ -36,6 +36,12 @@ export default function Contacto({ to, end, children, onClick }) {
               <i className="bi bi-envelope-fill"></i>
             </a>
           </div>
+          <footer className=" text-light py-4 mt-5">
+      <div className="container text-center">
+        <p className="mb-1">© 2025 Marcos Castiglioni</p>
+        <p className="mb-0 small">Desarrollador web · Montevideo, Uruguay</p>
+      </div>
+    </footer>
         </motion.div>
         );
 }
