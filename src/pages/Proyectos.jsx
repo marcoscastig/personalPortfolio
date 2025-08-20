@@ -5,6 +5,7 @@ import ecommerceImg from "../assets/Ecommerce.png";
 import crudImg from "../assets/crud.jpg";
 import calcImg from "../assets/calc.jpg";
 import rickAndMortyImg from "../assets/rickAndMorty.jpg";
+import snakeImg from "../assets/snakeImg.png";
 import { motion } from "framer-motion";
 import Contacto from '../components/Contacto';
 
@@ -20,6 +21,12 @@ const proyectos = [
     descripcion: "Simple pagina hecha con React",
     imagen: rickAndMortyImg,
     url: "https://rickandmortyappreactreact.netlify.app/",
+  },
+  {
+    titulo: "Snake Game",
+    descripcion: "Mini juego para pc que hice con ayuda de un tutorial",
+    imagen: snakeImg,
+    url: "https://marcoscastig.github.io/snakeGame/",
   },
   {
     titulo: "CRUD Api",
